@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "users_show", :media => "all" %>
+<div class=container >
+    
+        <h1></h1>
+        <p class="h2"><%= @user.name %></p>
+        <p><%= @user.email %></p>
+        <p><%= @user.profile %></p>
+
+        <% if current_user.id == @user.id %>
+        <table>
+        <tr>
+        <td><%= button_to "プロフィールを編集する" , edit_user_registration_path , class:"btn btn-outline-dark" ,method: :get %></td>
+        <td><%= button_to '新しく投稿する',  new_effector_path,  class:"btn btn-outline-dark", method: :get %></td>
+        </tr>
+        </table>
+        <% end %>
+        <div class=text-center>
+        <h2>自分の投稿</h2>
+        <div class="row">
+            <% @user.effectors.each do |t| %>
+                <div class="col-4 effector-card">
+                        <div class="card h-100">
+                            <%= image_tag t.image_url, class:"card-img-top" if t.image? %>
+                            <%= t.title %>   
+                            <%= t.introduction %>
+                            <%= t.user_id %>
+                        </div>  
+                </div>   
+            <% end %>
+        </div>
+
+    </div>
+</div>
+
+<%= link_to "Effector一覧に戻る", effectors_path %>

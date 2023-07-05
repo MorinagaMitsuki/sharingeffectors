@@ -1,0 +1,58 @@
+<%= stylesheet_link_tag "effectors_new", :media => "all" %>
+
+<head>
+<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class=container>
+    <div class=text-center>
+        <h1>Geekeffector</h1>
+        <div class=text-center>
+           
+        </div>
+                <div class="box1">
+                <h3>新規投稿ページ</h3>
+                    <%= form_for @effector do |f| %>
+                        <div class="field1">
+                            <%= f.label :タイトル, class:"fname"%>
+                            <%= f.text_field :title, :size => 60 ,class:"cool" %>
+                        </div>
+
+                        <div class="field2">
+                            <%= f.label :画像 %>
+                            <%= f.file_field :image %>
+                        </div>
+
+                        <div class="field3">
+                            <%= f.label :動画 %>
+                            <%= f.file_field :video %>
+                        </div>
+
+                        <div class="field">
+                            <%= f.label :説明 %>
+                            <%= f.text_area :introduction, :size => 60 %>
+                        </div>
+
+                        <div class="field">
+                            <%= f.label :公開された年 %>
+                            <%= f.number_field :released_year, :size => 60 %>
+                        </div>
+
+                        <div class="field">
+                            <%= f.label :ユーザーid %>
+                            <%= f.text_field :user_id, :size => 60 %>
+                        </div>
+
+                        <div class="field">
+                            <%= f.label :購入リンク %>
+                            <%= f.text_field :url, :size => 60 %>
+                        </div>
+
+                        <%= f.submit "投稿する" %>
+                    <% end %>
+
+                </div>
+     </div>                    
+</div>
+</body>

@@ -1,0 +1,44 @@
+
+
+.first-block {
+    background-image: url("toppagegazou.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 550px;
+    .a-block{
+        position: relative; 
+        top: 80px; 
+        left: 60px; 
+        font-family: "Sawarabi Mincho";
+    }
+  }
+
+  .second-block {
+    background-image: url("mokuzai.jpg");
+    display: flex;
+    writing-mode: vertical-rl;
+    align-items: center;
+    width: 100%;
+    height:500px;
+    margin-top: 30px;
+    font-family: "Hannari";
+  }
+
+.third-block { 
+    background-image: url("burakkukei.jpg");
+    display: flex;
+    writing-mode: vertical-rl;
+    align-items: center;
+    width: 100%;
+    height:400px;
+    margin-top: 30px;
+    font-family: "Hannari";
+}
+
+.fourth-block{
+    background-image: url("gre.jpg");
+    text-align:center;
+    width: 100%;
+    height:400px;
+    margin-top: 30px;
+}

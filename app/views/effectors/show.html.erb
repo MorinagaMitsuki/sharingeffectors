@@ -1,0 +1,36 @@
+
+<div class=text-center>
+    <h1>Geekeffector</h1>
+    <h3>Effector詳細</h3>
+    <div class="effector">
+    <p><%= @effector.title %></p>
+    <p><%= image_tag @effector.image_url, size: "500x300" %>
+    <% if @effector.video.attached? %>
+    <video src="<%= rails_blob_path(@effector.video) %>" type="video/mp4" controls></video>
+        <% end %>
+    <p><%= @effector.introduction %></p>
+    <p><%= @effector.released_year %></p>
+    <p><%= @effector.user_id %></p>
+    <a><%= @effector.url %></a>
+    <% if user_signed_in? %>
+        <% if current_user.already_liked?(@effector) %>
+            <%= button_to effector_like_path(@effector), method: :delete do %>
+            <p>いいねを取り消す</p><%= @effector.likes.count %>
+            <% end %>
+        <% else %>
+            <%= button_to effector_likes_path(@effector), method: :post do %>
+            <p>いいね</p><%= @effector.likes.count %>
+            <% end %>
+        <% end %>
+        <% else %>
+        <p>いいねの数 = </p><%= @effector.likes.count %>
+        <% end %>
+    </div>
+
+    <h2>いいねしたユーザー</h2>
+    <% @effector.liked_users.each do |user| %>
+    <li><%= user.email %></li>
+    <% end %>
+
+    <%= link_to 'effector一覧に戻る', effectors_path %>
+</div>

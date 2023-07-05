@@ -1,0 +1,2 @@
+class FamousEffector < ApplicationRecord
+end

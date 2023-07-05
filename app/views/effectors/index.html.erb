@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "effectors_index", :media => "all" %>
+<div class=container>
+<div class=text-center>
+    <h1>Geekeffector</h1>
+    <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <h3>Effector一覧</h3>
+    <%= link_to '新規投稿へ', new_effector_path %>
+    <% if user_signed_in? %>
+        <%= link_to "マイページへ", user_path(current_user.id) %>
+    <% end %>
+    <div class="row">
+        <% @effectors.each do |t| %>
+            <div class="col-4">
+                <div class="card h-100" >
+                    <%= image_tag t.image_url, class:"card-img-top" if t.image? %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= t.title %></h5>
+                        <p class="card-text"><%= t.introduction %></p>
+                        <%= button_to "詳細へ", effector_path(t.id), method: :get, class:"btn btn-primary" %>
+                        <% if user_signed_in? %>
+                            <% if current_user.already_liked?(t) %>
+                                <%= button_to effector_like_path(id: t.id, effector_id: t.id), class:'heart-button', method: :delete do %>
+                                    <i class="fas fa-heart unlike-btn"></i><%= t.likes.count %>
+                            <% end %>
+                            <% else %>
+                                <%= button_to effector_likes_path(id: t.id, effector_id: t.id), class:'heart-button', method: :post do %>
+                                    <i class="far fa-heart like-btn"></i><%= t.likes.count %>
+                            <% end %> 
+                        <% end %>
+                            <% else %>
+                                <p>いいねの数 = </p><%= t.likes.count %>
+                            <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+</div>
+</div>
+</div>
